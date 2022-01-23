@@ -1,24 +1,32 @@
 <template>
   <div>
     <Header />
-    <input
-      type="text"
-      name="Generate"
-      placeholder="Enter Text Here"
-      v-model="sequenceToGenerate"
-    />
-    <br />
-    <input
-      type="button"
-      class="button"
-      value="Generate QR code"
-      @click="GenerateQR()"
-    />
-    &nbsp;
-    <input type="button" class="button" value="Reset" @click="reset()" />
-    <br />
-    <br />
-    <qrcode-vue v-show="showQR" :value="value" :size="size" level="H" />
+    <div>
+      <input
+        type="text"
+        name="Generate"
+        placeholder="Enter Text Here"
+        v-model="sequenceToGenerate"
+      />
+    </div>
+    <div>
+      <input
+        type="button"
+        class="button"
+        value="Generate QR code"
+        @click="GenerateQR()"
+      />
+      &nbsp;
+      <input type="button" class="button" value="Reset" @click="reset()" />
+      <br />
+      <br />
+    </div>
+    <div v-show="showSpinner">
+      <img src="../assets/Hourglass.gif" width="150" height="150" />
+    </div>
+    <div v-show="showQR">
+      <qrcode-vue :value="value" :size="size" level="H" />
+    </div>
   </div>
 </template>
 
@@ -30,23 +38,29 @@ export default {
   data() {
     return {
       value: "",
+      size: 300,
       sequenceToGenerate: "",
       showQR: false,
-      nodata:false,
+      nodata: false,
+      showSpinner: false,
       beforeKeyUpSequenceToGenerate: "",
-      size: 300,
     };
   },
   components: { Header, QrcodeVue },
   name: "MainComponent",
   methods: {
     GenerateQR() {
+      this.showQR = false;
       if (this.sequenceToGenerate == "") {
         this.showQR = false;
         this.nodata = true;
       } else {
-        this.showQR = true;
-        this.value = this.sequenceToGenerate;
+        this.showSpinner = true;
+        setTimeout(() => {
+          this.showQR = true;
+          this.value = this.sequenceToGenerate;
+          this.showSpinner = false;
+        }, 2000);
         console.log("clicked");
       }
     },
