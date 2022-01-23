@@ -67,29 +67,32 @@ input[type="text"] {
   font-size: 25px;
   padding: 12px 20px;
   margin: 8px 0;
+  cursor: pointer;
 }
 .button {
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #02485a;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+ padding: 1.3em 3em;
+ font-size: 12px;
+ text-transform: uppercase;
+ letter-spacing: 2.5px;
+ font-weight: 500;
+ color: #000;
+ background-color: #fff;
+ border: none;
+ border-radius: 45px;
+ box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+ transition: all 0.3s ease 0s;
+ cursor: pointer;
+ outline: none;
 }
 
 .button:hover {
-  background-color: #02485a;
+ background-color: #2EE59D;
+ box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+ color: #fff;
+ transform: translateY(-7px);
 }
 
 .button:active {
-  background-color: #02485a;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+ transform: translateY(-1px);
 }
 </style>

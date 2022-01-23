@@ -1,6 +1,8 @@
 <template>
+<div class="background">
   <img id="logo" alt="Vue logo" src="./assets/logo.png">
   <MainComponent />
+</div>
 </template>
 
 <script>
@@ -24,8 +26,12 @@ export default {
   margin-top: 60px;
 }
 #logo{ 
-  max-width:100%;
-    height:170px;
+  max-width:90%;
+    height:130px;
 
+}
+.background{
+  background-color:powderblue;
+  border-radius: 20px;
 }
 </style>
